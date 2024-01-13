@@ -1,0 +1,14 @@
+services:
+  db:
+        image: mysql:5.7.22
+        restart: unless-stopped
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE:-freshrecipes}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root}
+            MYSQL_PASSWORD: ${DB_PASSWORD:-developer}
+            MYSQL_USER: ${DB_USERNAME:-freshrecipes}
+        ports:
+            - "3388:3306"
+        expose:
+            - "3388"
+        mem_limit: 1024m
